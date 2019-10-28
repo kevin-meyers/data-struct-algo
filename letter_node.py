@@ -1,4 +1,6 @@
 from unidecode import unidecode
+import sys
+import cProfile
 
 class Node:
     def __init__(self, letter):
@@ -42,15 +44,27 @@ class Tree:
             pointer for value in self.find_words(pointer)
         ]
 
+    def complete_words(self, starting_letters):
+        current_node = self.root
+
+        for letter in starting_letters:
+            current_node = current_node.pointers[ord(letter) - 97]
+
+        return [starting_letters[:-1] + ending for ending in self.find_words(current_node)]
+
+    def build_tree(self):
+        with open('/usr/share/dict/american-english', 'r') as f:
+            for word in f:
+                if not word.strip().isalpha():
+                    continue
+
+                self.add_word(list(unidecode(word.strip().lower())) + ['#END'])
+
+
+
 
 if __name__ == '__main__':
     t = Tree()
-    with open('/usr/share/dict/american-english', 'r') as f:
-        for word in f:
-            if not word.strip().isalpha():
-                continue
+    t.build_tree()
+    print(t.complete_words(sys.argv[1]))
 
-            t.add_word(list(unidecode(word.strip().lower())) + ['#END'])
-
-    start = t.root.pointers[2].pointers[0].pointers[19]
-    print(['ca' + ending for ending in t.find_words(start)])
