@@ -42,7 +42,7 @@ class Tree:
             pointer for value in self.find_words(pointer)
         ]
 
-    def complete_words(self, starting_letters):
+    def complete_word(self, starting_letters):
         current_node = self.root
 
         for letter in starting_letters:
@@ -69,5 +69,5 @@ if __name__ == '__main__':
         if user_in == '/':
             break
 
-        print(t.complete_words(user_in))
+        print(t.complete_word(user_in))
 
