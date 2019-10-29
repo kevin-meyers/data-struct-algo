@@ -35,14 +35,12 @@ class SinglyLinkedList:
     def delete(self, data):
         current = self.head
         previous = None
-        found = False
-        while current and not found:
+        while current:
             if current.data == data:
-                found = True
+                break
 
-            else:
-                previous = current
-                current = current.next
+            previous = current
+            current = current.next
 
         if current == None:
             raise ValueError('data not in list')
