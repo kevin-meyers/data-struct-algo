@@ -1,6 +1,4 @@
 from unidecode import unidecode
-import sys
-import cProfile
 
 class Node:
     def __init__(self, letter):
@@ -66,5 +64,10 @@ class Tree:
 if __name__ == '__main__':
     t = Tree()
     t.build_tree()
-    print(t.complete_words(sys.argv[1]))
+    while True:
+        user_in = input('enter some letters you want autocompleted type / to quit: ')
+        if user_in == '/':
+            break
+
+        print(t.complete_words(user_in))
 
