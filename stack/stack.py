@@ -1,4 +1,4 @@
-
+from itertools import repeat
 
 class Node:
     def __init__(self, data):
@@ -10,6 +10,14 @@ class Stack:
     def __init__(self):
         self.top = None
         self.height = 0
+
+    def __len__(self):
+        return self.height
+
+    def __iter__(self):
+        for i in repeat(None, self.__len__()):
+            yield self.pop()
+
 
     def push(self, data):
         node = Node(data)
