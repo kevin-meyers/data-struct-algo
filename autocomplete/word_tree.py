@@ -1,5 +1,10 @@
 from unidecode import unidecode
 
+START = '#START'
+END = '#END'
+ASCII_OFFSET = ord('a')  # 97
+
+
 class Node:
     def __init__(self, letter):
         self.pointers = [False]*27
@@ -8,17 +13,17 @@ class Node:
 
 class Tree:
     def __init__(self):
-        self.root = Node(['#START'])
+        self.root = Node([START])
 
     def add_word(self, word, node=None):
         if not node:
             node = self.root
 
         if len(word) == 1:
-            node.pointers[26] = '#END'
+            node.pointers[26] = END
             return
 
-        head, tail = ord(word[0]) - 97, word[1:]
+        head, tail = ord(word[0]) - ASCII_OFFSET, word[1:]
 
         next_node = node.pointers[head]
         if not next_node:
@@ -30,10 +35,9 @@ class Tree:
 
     def find_words(self, node=None):
         if not node:
-            print('this will return all words...')
-            return ValueError
+            raise ValueError('this will return all words...')
 
-        if node == '#END':
+        if node == END:
             return ['']
 
         return [
@@ -44,9 +48,17 @@ class Tree:
 
     def complete_word(self, starting_letters):
         current_node = self.root
+        try:
+            for letter in starting_letters:
+                current_node = current_node.pointers[ord(letter) - ASCII_OFFSET]
 
-        for letter in starting_letters:
-            current_node = current_node.pointers[ord(letter) - 97]
+            if not current_node:  # Without this the previous statement could
+                raise             # return False and cause a break later.
+
+        except:
+            return 'Those letters dont lead to a word in the dictionary.'
+
+        print(current_node)
 
         return [starting_letters[:-1] + ending for ending in self.find_words(current_node)]
 
@@ -56,7 +68,7 @@ class Tree:
                 if not word.strip().isalpha():
                     continue
 
-                self.add_word(list(unidecode(word.strip().lower())) + ['#END'])
+                self.add_word(list(unidecode(word.strip().lower())) + [END])
 
 
 
