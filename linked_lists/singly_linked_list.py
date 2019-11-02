@@ -12,6 +12,15 @@ class SinglyLinkedList:
         self.head = None
         self.length = 0
 
+    def __len__(self):
+        return self.length
+
+    def __iter__(self):
+        current = self.head
+        for _ in range(len(self)):
+            yield current
+            current = current.next
+
     def add(self, data):
         node = Node(data)
         if self.head == None:
@@ -22,15 +31,15 @@ class SinglyLinkedList:
             self.tail.next = node
             self.tail= node
 
-    def search(self, data):
+    def __contains__(self, data):
         current = self.head
         while current:
             if current.data == data:
-                return current.data
+                return True
 
             current = current.next
 
-        raise ValueError('data not in list')
+        return False
 
     def delete(self, data):
         current = self.head
