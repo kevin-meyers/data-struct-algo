@@ -18,10 +18,10 @@ class SinglyLinkedList:
     def __iter__(self):
         current = self.head
         for _ in range(len(self)):
-            yield current
+            yield current.data
             current = current.next
 
-    def add(self, data):
+    def append(self, data):
         node = Node(data)
         if self.head == None:
             self.head = node
