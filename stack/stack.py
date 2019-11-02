@@ -30,6 +30,7 @@ class Stack:
 
         self.height += 1
 
+
     def pop(self):
         if not self.top:
             return None
@@ -42,3 +43,7 @@ class Stack:
 
     def peek(self):
         return self.top.data if self.top else None
+
+    def push_many(self, data_iter):
+        for data in data_iter:
+            self.push(data)
