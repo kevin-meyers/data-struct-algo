@@ -25,4 +25,16 @@ def preorder_traversal(self, new_root):
     self.preorder_traversal(current.right)
 ```
 
+ * Postorder traversal
+```py
+def postorder_traversal(self, new_root):
+    current = new_root
+    if current is None:
+	return
+    
+    self.postorder_traversal(current.left)
+    self.postorder_traversal(current.right)
+    print(current.data)
+```
+
 More info soon
