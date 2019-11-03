@@ -1,4 +1,4 @@
-from queues.node_queue import NodeQueue
+from queues.stack_queue import StackQueue as Queue
 
 class Node:
     def __init__(self, data):
@@ -12,7 +12,7 @@ class BinaryTree:
         self.root = None
 
     def breadth_first(self):
-        queue = NodeQueue()
+        queue = Queue()
         queue.enqueue(self.root)
 
         while len(queue) > 0:
