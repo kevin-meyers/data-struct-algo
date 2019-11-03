@@ -1,4 +1,4 @@
-
+from queues.node_queue import NodeQueue
 
 class Node:
     def __init__(self, data):
@@ -11,12 +11,18 @@ class BinaryTree:
     def __init__(self):
         self.root = None
 
-    def inorder_traversal(self, new_root):
-        current = new_root
-        if current is None:
-            return
+    def breadth_first(self):
+        queue = NodeQueue()
+        queue.enqueue(self.root)
 
-        self.inorder_traversal(current.left)
-        print(current.data)
-        self.inorder_traversal(current.right)
+        while len(queue) > 0:
+            node = queue.dequeue()
+            yield node.data
+            if node.left:
+                queue.enqueue(node.left)
 
+            if node.right:
+                queue.enqueue(node.right)
+
+    def depth_first():
+        pass
