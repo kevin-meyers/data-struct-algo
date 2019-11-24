@@ -4,6 +4,7 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
     from stack.stack import Stack
 
+
 class StackQueue:
     def __init__(self):
         self.inbound = Stack()

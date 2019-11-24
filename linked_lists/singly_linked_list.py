@@ -32,12 +32,9 @@ class SinglyLinkedList:
             self.tail= node
 
     def __contains__(self, data):
-        current = self.head
-        while current:
-            if current.data == data:
+        for d in self:
+            if d == data:
                 return True
-
-            current = current.next
 
         return False
 
