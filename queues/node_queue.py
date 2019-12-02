@@ -4,7 +4,6 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-        self.previous = None
 
 
 class NodeQueue:
@@ -28,10 +27,16 @@ class NodeQueue:
 
         else:
             self.tail.next = node
-            node.previous = self.tail
             self.tail = node
 
         self.length += 1
+
+    def peek(self):
+        if len(self) == 0:
+            return None
+
+        return self.head.data
+
 
     def dequeue(self):
         if len(self) == 0:
