@@ -1,8 +1,6 @@
-if __name__ == '__main__':
-    import os
-    import sys
-    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-    from stack.stack import Stack
+import os
+import sys
+from stack.stack import Stack
 
 
 class StackQueue:
@@ -32,3 +30,13 @@ class StackQueue:
         self.length -= 1
 
         return self.outbound.pop()
+
+
+if __name__ == '__main__':
+    sq = StackQueue()
+
+    for i in range(10):
+        sq.enqueue(i)
+
+    for i in range(10):
+        assert i == sq.dequeue()
