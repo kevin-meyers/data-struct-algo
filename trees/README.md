@@ -15,14 +15,13 @@ def inorder_traversal(self, new_root):
 
  * Preorder traversal:
 ```py
-def preorder_traversal(self, new_root):
-    current = new_root
-    if current is None:
+def preorder_traversal(self, node):
+    if node is None:
         return 
     
     print(current.data)
-    self.preorder_traversal(current.left)
-    self.preorder_traversal(current.right)
+    self.preorder_traversal(node.left)
+    self.preorder_traversal(node.right)
 ```
 
  * Postorder traversal

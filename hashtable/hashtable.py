@@ -7,6 +7,9 @@ class KV_pair:
     key: object
     value: object
 
+    def __eq__(self, other):
+        return self.key == other.key
+
 
 class HashTable(object):
 
