@@ -1,6 +1,6 @@
 import os
 import sys
-from stack.stack import Stack
+from data_struct_algo.stack.stack import Stack
 
 
 class StackQueue:
@@ -39,4 +39,4 @@ if __name__ == '__main__':
         sq.enqueue(i)
 
     for i in range(10):
-        assert i == sq.dequeue()
+        print(sq.dequeue())

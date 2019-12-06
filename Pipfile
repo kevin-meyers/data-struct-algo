@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 jupyter = "*"
 unidecode = "*"
-data-structs = {editable = true,path = "."}
+datastructs = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"

@@ -11,8 +11,10 @@ class CircularBuffer(list):
         return self.length
 
     def __iter__(self):
-        while len(self) > 0:
-            yield self.dequeue()
+        count = 0
+        while count < len(self):  # shows all items
+            yield self[(self.head + count) % self.max_size]
+            count += 1
 
     def enqueue(self, data):
         index = (self.head + len(self)) % self.max_size
