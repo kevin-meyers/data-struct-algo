@@ -11,10 +11,19 @@ class CircularBuffer(list):
         return self.length
 
     def __iter__(self):
-        count = 0
-        while count < len(self):  # shows all items
-            yield self[(self.head + count) % self.max_size]
-            count += 1
+        while len(self) > 0:
+            yield self.dequeue()
+
+    def __repr__(self):
+        items = []
+        while len(items) < len(self):  # shows all items
+            item = self[(self.head + len(items)) % self.max_size]
+            items.append(item)
+
+        return ' '.join(items)
+
+    def __hash__(self):
+        return hash(repr(self))
 
     def enqueue(self, data):
         index = (self.head + len(self)) % self.max_size
@@ -46,6 +55,9 @@ class CircularBuffer(list):
         self._remove()
 
         return item
+
+    def empty(self):
+        (_ for _ in self)
 
 
 if __name__ == '__main__':
