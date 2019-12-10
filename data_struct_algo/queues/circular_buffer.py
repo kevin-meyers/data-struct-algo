@@ -18,7 +18,7 @@ class CircularBuffer(list):
         items = []
         while len(items) < len(self):  # shows all items
             item = self[(self.head + len(items)) % self.max_size]
-            items.append(item)
+            items.append(str(item))
 
         return ' '.join(items)
 
@@ -57,7 +57,7 @@ class CircularBuffer(list):
         return item
 
     def empty(self):
-        (_ for _ in self)
+        [_ for _ in self]
 
 
 if __name__ == '__main__':
