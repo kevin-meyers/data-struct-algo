@@ -5,4 +5,4 @@ from . import stack
 from . import graphs
 from . import hashtable
 from . import sorting
-from . import linked_list
+from . import linked_lists
