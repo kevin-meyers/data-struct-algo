@@ -1,4 +1,2 @@
-from .data_struct_algo import queues
-
-print('help')
+print('hello from ' + __name__)
 
