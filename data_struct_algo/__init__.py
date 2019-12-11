@@ -1,2 +1,2 @@
-print('hello from ' + __name__)
+from .queues import *
 
