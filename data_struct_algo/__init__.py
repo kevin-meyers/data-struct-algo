@@ -1,3 +1,4 @@
-import queues
+from . import *
+
 print('help')
 
