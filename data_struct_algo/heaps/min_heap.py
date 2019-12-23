@@ -25,7 +25,6 @@ class MinHeap:
         else:
             return index * 2 + 1
 
-
     def _sink(self, index):
         ''' After the root has been replaced with most_recent, sink it down to
         its proper place.
